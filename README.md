@@ -62,14 +62,16 @@ Full Modular Monolith .NET application with Domain-Driven Design approach.
 
 [9. License](#9-license)
 
+[10. Inspirations and Recommendations](#10-inspirations-and-recommendations)
+
 ## 1. Introduction
 
 ### 1.1 Purpose of this repository
 
 This is list of main goals of this repository:
 
-- Showing how you can implement the **monolith** application in a **modular** way
-- Presentation of the **full implementation** of the application. This is not another simple application. This is not another proof of concept (PoC). The assumption is to present the implementation of the application that would be ready to run on production
+- Showing how you can implement a **monolith** application in a **modular** way
+- Presentation of the **full implementation** of an application. This is not another simple application. This is not another proof of concept (PoC). The goal is to present the implementation of an application that would be ready to run in production
 - Showing the application of **best practices** and **object-oriented programming principles**
 - Presentation of the use of **design patterns**. When, how and why they can be used
 - Presentation of some **architectural** considerations, decisions, approaches
@@ -78,13 +80,13 @@ This is list of main goals of this repository:
 
 ### 1.2 Out of scope
 
-This is list of subjects which are out of scope of this repository:
+This is list of subjects which are out of scope for this repository:
 - Business requirements gathering and analysis
 - System analysis
 - Domain exploration
 - Domain distillation
 - Domain-Driven Design strategic patterns
-- Architecture evaluation, quality attributes analyzes
+- Architecture evaluation, quality attributes analysis
 - Integration, system tests
 - Project management
 - Infrastructure
@@ -99,8 +101,8 @@ This is list of subjects which are out of scope of this repository:
 The reason for creating this repository is the lack of something similar. Most sample applications on GitHub have at least one issue of the following:
 - it is very, very simple - few entities and use cases implemented
 - it is not finished (for example there is no authentication, logging, etc..)
-- it is poor designed (in my opinion)
-- it is poor implemented  (in my opinion)
+- it is poorly designed (in my opinion)
+- it is poorly implemented (in my opinion)
 - it is not well described
 - assumptions and decisions are not clearly explained
 - it implements "Orders" domain. Yes, everyone knows this domain, but something different is needed
@@ -111,11 +113,11 @@ To sum up, there are some very good examples, but there are far too few of them.
 
 ### 1.4 Disclaimer
 
-Software architecture should always be created to resolve specific **business problems**. Software architecture always supports some of quality attributes and at the same time does not support others. A lot of other factors influence your software architecture - your team, opinions, preferences, experiences, technical constraints, time, budget etc.
+Software architecture should always be created to resolve specific **business problems**. Software architecture always supports some quality attributes and at the same time does not support others. A lot of other factors influence your software architecture - your team, opinions, preferences, experiences, technical constraints, time, budget etc.
 
-Always functional requirements, quality attributes, technical constraints and other factors should be considered before architectural decision is made.
+Always functional requirements, quality attributes, technical constraints and other factors should be considered before an architectural decision is made.
 
-Because of the above, the architecture and implementation presented in this repository is **one of the many ways** to solve some problems. Take from this repository as much as you want, use it as you like but remember to **always pick the best solution which is appropriate to problem class you have**.
+Because of the above, the architecture and implementation presented in this repository is **one of the many ways** to solve some problems. Take from this repository as much as you want, use it as you like but remember to **always pick the best solution which is appropriate to the problem class you have**.
 
 ### 1.5 Give a Star
 
@@ -135,10 +137,10 @@ As it is written above there are very few really good examples of this type of a
 
 For the purposes of this project, the meeting groups domain, based on the [Meetup](https://www.meetup.com/) system, was selected.
 
-**Main reasons of selection this domain:**
+**Main reasons for selecting this domain:**
 
-- It is common, a lot of people use Meetup site to organize or attend meetings.
-- There is system for it, so everyone can check how software which supports this domain works
+- It is common, a lot of people use the Meetup site to organize or attend meetings.
+- There is a system for it, so everyone can check how software which supports this domain works
 - It is not complex so it is easy to understand
 - It is not trivial, there are some business rules and logic. It does not have only CRUD operations
 - You don't need much specific domain knowledge as for other domains like financing, banking, medical
@@ -146,19 +148,19 @@ For the purposes of this project, the meeting groups domain, based on the [Meetu
 
 **Meetings**
 
-Main business entities are ```Member```, ```Meeting Group``` and ```Meeting```. ```Member``` can create ```Meeting Group```, be part of ```Meeting Group``` or can attend the ```Meeting```. 
+Main business entities are ```Member```, ```Meeting Group``` and ```Meeting```. ```Member``` can create ```Meeting Group```, be part of ```Meeting Group``` or can attend the ```Meeting```.
 
-```Meeting Group Member``` can be an ```Organizer``` of this group or normal ```Member```.
+A ```Meeting Group Member``` can be an ```Organizer``` of this group or normal ```Member```.
 
 Only ```Organizer``` of ```Meeting Group``` can create new ```Meeting```.
 
-```Meeting``` have attendees, not attendees (```Members``` which declare that not attendee ```Meeting```) and ```Members``` on ```Waitlist```.
+A ```Meeting``` has attendees, not attendees (```Members``` which declare they will not attend the ```Meeting```) and ```Members``` on ```Waitlist```.
 
-```Meeting``` can have attendees limit. If the limit is reach, ```Members``` can only sign up to ``Waitlist``.
+A ```Meeting``` can have attendees limit. If the limit is reach, ```Members``` can only sign up to ``Waitlist``.
 
-```Meeting Attendee``` can bring to ```Meeting``` guests. Number of guests is an attribute of ```Meeting```. Bringing guests can be not allowed.
+A ```Meeting Attendee``` can bring guests to the ```Meeting```. Number of guests is an attribute of ```Meeting```. Bringing guests can be unallowed.
 
-```Meeting Attendee``` can have one of two roles : normal ```Attendee``` or ```Host```. ```Meeting``` must have at least one ```Host```. ```Host``` is special role which can edit ```Meeting``` information or change attendees list.
+A ```Meeting Attendee``` can have one of two roles : normal ```Attendee``` or ```Host```. A ```Meeting``` must have at least one ```Host```. ```Host``` is a special role which grants permission to edit ```Meeting``` information or change attendees list.
 
 **Administration**
 
@@ -168,15 +170,15 @@ To create new ```Meeting Group```, ```Member``` needs to propose this group. ```
 
 To be able to organize ```Meetings```, the ```Meeting Group``` must be paid for. ```Meeting Group``` ```Organizer``` who is the ```Payer```, must pay some fee according to payment plan.
 
-Additionally, Meeting organizer can set ```Event Fee```. Each ```Meeting Attendee``` of is obliged to pay a fee. All guests should be paid by Meeting Attendee too.
+Additionally, Meeting organizer can set ```Event Fee```. Each ```Meeting Attendee``` is obliged to pay a fee. All guests should be paid by ```Meeting Attendee``` too.
 
 **Users**
 
-Each ```Administrator```,```Member``` and ```Payer``` is an ```User```. To be an ```User```, ```User Registration``` is required and confirmed.
+Each ```Administrator```, ```Member``` and ```Payer``` is a ```User```. To be a ```User```, ```User Registration``` is required and confirmed.
 
-Each ```User``` has assigned one or more ```User Role```. 
+Each ```User``` is assigned one or more ```User Role```.
 
-Each ```User Role``` has set of ```Permissions```. ```Permission``` defines whether ```User``` can invoke particular action.
+Each ```User Role``` has set of ```Permissions```. ```Permission``` defines whether ```User``` can invoke a particular action.
 
 
 ### 2.2 Conceptual Model
@@ -191,11 +193,11 @@ Each ```User Role``` has set of ```Permissions```. ```Permission``` defines whet
 
 ### 2.3 Event Storming
 
-Conceptual Model focuses on structures and relationships between them. What is more important is **behavior** end **events** that occurs in our domain. 
+Conceptual Model focuses on structures and relationships between them. What is more important is **behavior** and **events** that occur in our domain. 
 
 There are many ways to show behavior and events. One of them is a light technique called [Event Storming](https://www.eventstorming.com/) which is becoming more popular. Below are presented 3 main business processes using this technique : user registration, meeting group creation and meeting organization.
 
-Note: Event Storming is light, live workshop. Here is presented only one of the possible outputs of this workshop. Even you are not doing Event Storming workshops, this type of presentation of process can be very valuable to you and your stakeholders.
+Note: Event Storming is a light, live workshop. Here is presented only one of the possible outputs of this workshop. Even if you are not doing Event Storming workshops, this type of presentation of process can be very valuable to you and your stakeholders.
 
 **User Registration process**
 
@@ -241,10 +243,10 @@ Modules description:
 3. Each module has its own interface which is used by API.
 4. **Modules communicate each other only asynchronously using Events Bus**. Remote Procedure Call is not allowed.
 5. Each Module **has it's own data** - in separate schema or database. Shared data is not allowed.
-6. Module doesn't have dependency to other module. Module can have only dependency to integration events assembly of other module (see [Module level view](#32-module-level-view)).
+6. Module doesn't have dependencies on other modules. Module can have only dependency on integration events assembly of other module (see [Module level view](#32-module-level-view)).
 7. Each Module has its own [Composition Root](https://freecontent.manning.com/dependency-injection-in-net-2nd-edition-understanding-the-composition-root/). Which implies that each Module has its own Inversion Of Control container.
-8. API as a host needs to initialize each module. Each module has initialization method.
-9. Each module is **highly encapsulated**. Only required types and members are public - rest is internal or private.
+8. API as a host needs to initialize each module. Each module has an initialization method.
+9. Each module is **highly encapsulated**. Only required types and members are public - the rest is internal or private.
 
 ### 3.2 Module Level View
 
@@ -259,7 +261,7 @@ Each Module consists of the following submodules (assemblies):
 
 ![](docs/Images/VSSolution.png)
 
-Note: Application, Domain and Infrastructure assemblies can be merged to one assembly. Some people like horizontal layering or more decomposition, some don't. Implementing Domain Model or Infrastructure in separate assembly gives opportunity to encapsulate it using internal keyword. Sometimes Bounded Context logic is not worth it because it is too simple. As always, be pragmatic and take approach whatever you like.
+Note: Application, Domain and Infrastructure assemblies can be merged into one assembly. Some people like horizontal layering or more decomposition, some don't. Implementing Domain Model or Infrastructure in separate assembly gives opportunity to encapsulate it using internal keyword. Sometimes Bounded Context logic is not worth it because it is too simple. As always, be pragmatic and take approach whatever you like.
 
 ### 3.3 API and Module Communication
 
@@ -267,11 +269,11 @@ API communicates with Module only in two places: during module initialization an
 
 **Module initialization**
 
-Each module has static ``Initialize`` method which is invoked in API ``Startup`` class. All configuration needed by this module should be provided as argument in this method. During initialization all services are configured and Composition Root using Inversion Of Control Container is created.
+Each module has static ``Initialize`` method which is invoked in API ``Startup`` class. All configuration needed by this module should be provided as arguments to this method. During initialization all services are configured and Composition Root using Inversion Of Control Container is created.
 
 ```csharp
 public static void Initialize(
-    string connectionString, 
+    string connectionString,
     IExecutionContextAccessor executionContextAccessor,
     ILogger logger,
     EmailsConfiguration emailsConfiguration)
@@ -301,11 +303,11 @@ public interface IMeetingsModule
 }
 ```
 
-Note: Some people say that processing of command shouldn't return a result. This is good approach but sometimes impractical, especially when you create resource and want immediately return ID of this resource. Sometimes, boundary between Command and Query is blurry. One of the examples is ``AuthenticateCommand`` - it returns token but it is not a query (has side effect).
+Note: Some people say that processing of command shouldn't return a result. This is a good approach but sometimes impractical, especially when you create a resource and want to immediately return the ID of this resource. Sometimes, boundary between Command and Query is blurry. One of the examples is ``AuthenticateCommand`` - it returns a token but it is not a query (has side effect).
 
 ### 3.4 Module requests processing CQRS
 
-Commands and Queries processing is separated applying architectural style/pattern [Command Query Responsibility Segregation (CQRS)](https://docs.microsoft.com/pl-pl/azure/architecture/patterns/cqrs). 
+Commands and Queries processing is separated applying architectural style/pattern [Command Query Responsibility Segregation (CQRS)](https://docs.microsoft.com/pl-pl/azure/architecture/patterns/cqrs).
 
 ![](docs/Images/CQRS.jpg)
 
@@ -318,7 +320,7 @@ internal class CreateNewMeetingGroupCommandHandler : ICommandHandler<CreateNewMe
     private readonly IMeetingGroupProposalRepository _meetingGroupProposalRepository;
 
     internal CreateNewMeetingGroupCommandHandler(
-        IMeetingGroupRepository meetingGroupRepository, 
+        IMeetingGroupRepository meetingGroupRepository,
         IMeetingGroupProposalRepository meetingGroupProposalRepository)
     {
         _meetingGroupRepository = meetingGroupRepository;
@@ -407,7 +409,7 @@ All classes, methods and other members named in business language used in this B
 
 6. **Testable**
 
-Domain Model is critical part of system so it should be easy to test (Testable Design).
+Domain Model is a critical part of the system so it should be easy to test (Testable Design).
 
 ```csharp
 public class MeetingGroup : Entity, IAggregateRoot
@@ -429,14 +431,14 @@ public class MeetingGroup : Entity, IAggregateRoot
     private DateTime? _paymentDateTo;
 
     internal static MeetingGroup CreateBasedOnProposal(
-        MeetingGroupProposalId meetingGroupProposalId, 
-        string name, 
+        MeetingGroupProposalId meetingGroupProposalId,
+        string name,
         string description,
         MeetingGroupLocation location, MemberId creatorId)
     {
         return new MeetingGroup(meetingGroupProposalId, name, description, location, creatorId);
     }
-    
+
      public Meeting CreateMeeting(
             string title,
             MeetingTerm term,
@@ -485,8 +487,8 @@ internal class LoggingCommandHandlerDecorator<T> : ICommandHandler<T> where T:IC
     private readonly ICommandHandler<T> _decorated;
 
     public LoggingCommandHandlerDecorator(
-        ILogger logger, 
-        IExecutionContextAccessor executionContextAccessor, 
+        ILogger logger,
+        IExecutionContextAccessor executionContextAccessor,
         ICommandHandler<T> decorated)
     {
         _logger = logger;
@@ -549,8 +551,8 @@ internal class LoggingCommandHandlerDecorator<T> : ICommandHandler<T> where T:IC
         {
             if (_executionContextAccessor.IsAvailable)
             {
-                logEvent.AddOrUpdateProperty(new LogEventProperty("CorrelationId", new ScalarValue(_executionContextAccessor.CorrelationId))); 
-            }               
+                logEvent.AddOrUpdateProperty(new LogEventProperty("CorrelationId", new ScalarValue(_executionContextAccessor.CorrelationId)));
+            }
         }
     }
 }
@@ -567,7 +569,7 @@ internal class ValidationCommandHandlerDecorator<T> : ICommandHandler<T> where T
     private readonly ICommandHandler<T> _decorated;
 
     public ValidationCommandHandlerDecorator(
-        IList<IValidator<T>> validators, 
+        IList<IValidator<T>> validators,
         ICommandHandler<T> decorated)
     {
         this._validators = validators;
@@ -602,6 +604,7 @@ internal class ValidationCommandHandlerDecorator<T> : ICommandHandler<T> where T
 ```
 
 **Unit Of Work**
+
 Every Command processing has side effects. To not call commit on every handler, ``UnitOfWorkCommandHandlerDecorator`` is used. It additionally marks ``InternalCommand`` as processed (if it is Internal Command) and dispatches all Domain Events (as part of [Unit Of Work](https://martinfowler.com/eaaCatalog/unitOfWork.html)).
 
 ```csharp
@@ -612,8 +615,8 @@ public class UnitOfWorkCommandHandlerDecorator<T> : ICommandHandler<T> where T:I
     private readonly MeetingsContext _meetingContext;
 
     public UnitOfWorkCommandHandlerDecorator(
-        ICommandHandler<T> decorated, 
-        IUnitOfWork unitOfWork, 
+        ICommandHandler<T> decorated,
+        IUnitOfWork unitOfWork,
         MeetingsContext meetingContext)
     {
         _decorated = decorated;
@@ -648,7 +651,7 @@ public class UnitOfWorkCommandHandlerDecorator<T> : ICommandHandler<T> where T:I
 
 Integration between modules takes place only in an **asynchronous** way using Integration Events and In Memory Events Bus as broker. In this way coupling between modules is minimal and exists only on structure of Integration Events.
 
-**Modules don't share data** so it is not possible and wanted to create transaction which spans more than one module. To ensure maximum reliability, [Outbox / Inbox pattern](http://www.kamilgrzybek.com/design/the-outbox-pattern/) are used. They provide accordingly *"At-Least-Once delivery"* and *"At-Least-Once processing"*.
+**Modules don't share data** so it is not possible or desirable to create a transaction which spans more than one module. To ensure maximum reliability, [Outbox / Inbox pattern](http://www.kamilgrzybek.com/design/the-outbox-pattern/) are used. They provide accordingly *"At-Least-Once delivery"* and *"At-Least-Once processing"*.
 
 ![](docs/Images/OutboxInbox.jpg)
 
@@ -664,9 +667,9 @@ Outbox and Inbox is implemented using two SQL tables and background worker for e
 
 ### 3.8 Internal processing
 
-The main principle of this system is that you can change its state only by calling a specific Command. 
+The main principle of this system is that you can change its state only by calling a specific Command.
 
-Sometimes, Command can be called not by API but by processing module itself. The main use case which uses this mechanism is data processing in eventual consistency mode, when we want to process something in different process and transaction. This applies for example for Inbox processing, because we want to do something (calling a Command) based on Integration Event from Inbox.
+Sometimes, Command can be called not by API but by processing module itself. The main use case which uses this mechanism is data processing in eventual consistency mode, when we want to process something in a different process and transaction. This applies for example to Inbox processing, because we want to do something (calling a Command) based on Integration Event from Inbox.
 
 This idea is taken from Alberto's Brandolini Event Storming picture called "The picture that explains “almost” everything" which shows that every side effect (domain event) is created by invoking Command on Aggregate. See [EventStorming cheat sheet](https://xebia.com/blog/eventstorming-cheat-sheet/) article for more details.
 
@@ -731,13 +734,13 @@ public class ResourceOwnerPasswordValidator : IResourceOwnerPasswordValidator
         if (!authenticationResult.IsAuthenticated)
         {
             context.Result = new GrantValidationResult(
-                TokenRequestErrors.InvalidGrant, 
+                TokenRequestErrors.InvalidGrant,
                 authenticationResult.AuthenticationError);
             return;
         }
         context.Result = new GrantValidationResult(
-            authenticationResult.User.Id.ToString(), 
-            "forms", 
+            authenticationResult.User.Id.ToString(),
+            "forms",
             authenticationResult.User.Claims);
     }
 }
@@ -745,7 +748,7 @@ public class ResourceOwnerPasswordValidator : IResourceOwnerPasswordValidator
 
 **Authorization**
 
-Authorization mechanism implements [RBAC (Role Based Access Control)](https://en.wikipedia.org/wiki/Role-based_access_control) using Permissions. Permissions are more granular and much better way to secure your application than Roles. Each User has set of Roles and each Role contains one or more Permission. With this mapping User has set of Permissions which are always checked on ``Controller`` level:
+Authorization mechanism implements [RBAC (Role Based Access Control)](https://en.wikipedia.org/wiki/Role-based_access_control) using Permissions. Permissions are more granular and much better way to secure your application than Roles. Each User has a set of Roles and each Role contains one or more Permission. With this mapping User has set of Permissions which are always checked on ``Controller`` level:
 
 ```csharp
 [HttpPost]
@@ -755,9 +758,9 @@ public async Task<IActionResult> ProposeMeetingGroup(ProposeMeetingGroupRequest 
 {
     await _meetingsModule.ExecuteCommandAsync(
         new ProposeMeetingGroupCommand(
-            request.Name, 
-            request.Description, 
-            request.LocationCity, 
+            request.Name,
+            request.Description,
+            request.LocationCity,
             request.LocationCountryCode));
 
     return Ok();
@@ -790,18 +793,19 @@ Each unit test has 3 standard sections: Arrange, Act and Assert
 
 1. Arrange
 
-The Arrange section is responsible for preparing the Aggregate for testing the public method that we want to test. This public method is often called from the unit tests perspective as SUT (system under test). 
+The Arrange section is responsible for preparing the Aggregate for testing the public method that we want to test. This public method is often called from the unit tests perspective as SUT (system under test).
 
-Creating an Aggregate ready for testing involves **calling one or more other public constructors/methods** on the Domain Model. At first it may seem that we are testing too many things at the same time, but this is not true. We need to be in one hundred percent sure, that the Aggregate is in state exactly as it will be in production. This can only be ensured when:
+Creating an Aggregate ready for testing involves **calling one or more other public constructors/methods** on the Domain Model. At first it may seem that we are testing too many things at the same time, but this is not true. We need to be one hundred percent sure, that the Aggregate is in a state exactly as it will be in production. This can only be ensured when:
 
 - **we use only public API of Domain Model**
-- we don't use [InternalsVisibleToAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.internalsvisibletoattribute?view=netframework-4.8) class. This exposes Domain Model to Unit Tests library removing encapsulation so our tests and production code is treated differently and it is very bad thing.
-- we don't use [ConditionalAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.conditionalattribute?view=netframework-4.8) classes. It reduces readability and increase complexity.
-- we don't create any special constructors/factory methods for tests (even with conditional compilation symbols). Special constructor/factory method only for unit tests causes duplication of business logic in test itself and focuses on state. Additionally, this kind of approach causes that test is very sensitive to changes and hard to maintain.
+- we don't use [InternalsVisibleToAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.internalsvisibletoattribute?view=netframework-4.8) class. This exposes Domain Model to Unit Tests library removing encapsulation so our tests and production code is treated differently and it is a very bad thing.
+- we don't use [ConditionalAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.conditionalattribute?view=netframework-4.8) classes. It reduces readability and increases complexity.
+- we don't create any special constructors/factory methods for tests (even with conditional compilation symbols). Special constructor/factory method only for unit tests causes duplication of business logic in the test itself and focuses on state. Additionally, this kind of approach causes the test to be very sensitive to changes and hard to maintain.
 - We don't remove encapsulation from Domain Model (for example: change keywords from  internal/private to public)
-- We don't make methods protected to inherit from tested class and this way making access to internal methods/properties. 
+- We don't make methods protected to inherit from tested class and in this way provide access to internal methods/properties. 
 
 **Isolation of external dependencies**
+
 There are 2 main concepts - stubs and mocks:
 
 > A stub is a controllable replacement for an existing dependency (or collaborator) in the system. By using a stub, you can test your code without dealing with the dependency directly.
@@ -809,7 +813,7 @@ There are 2 main concepts - stubs and mocks:
 >A mock object is a fake object in the system that decides whether the unit test has passed or failed. It does so by verifying whether the object under test called the fake object as expected. There’s usually no more than one mock per test.
 >[Art of Unit Testing 2nd Edition](https://www.manning.com/books/the-art-of-unit-testing-second-edition) Roy Osherove
 
-Good advice is following: use stub if you need to, but try to avoid mocks. Mocking causes that we test too many internal things and leads to overspecification.
+Good advice is following: use stubs if you need to, but try to avoid mocks. Mocking causes us to test too many internal things and leads to overspecification.
 
 2. Act
 
@@ -833,7 +837,7 @@ public void NewUserRegistration_WithUniqueLogin_IsSuccessful()
     // Act
     var userRegistration =
         UserRegistration.RegisterNewUser(
-            "login", "password", "test@email", 
+            "login", "password", "test@email",
             "firstName", "lastName", usersCounter);
 
     // Assert
@@ -869,7 +873,7 @@ public void AddAttendee_WhenMemberIsAlreadyAttendeeOfMeeting_IsNotPossible()
     var meetingTestData = CreateMeetingTestData(new MeetingTestDataOptions
     {
         CreatorId = creatorId
-    });    
+    });
     var newMemberId = new MemberId(Guid.NewGuid());
     meetingTestData.MeetingGroup.JoinToGroupMember(newMemberId);
     meetingTestData.Meeting.AddAttendee(meetingTestData.MeetingGroup, newMemberId, 0);
@@ -879,11 +883,11 @@ public void AddAttendee_WhenMemberIsAlreadyAttendeeOfMeeting_IsNotPossible()
     {
         // Act
         meetingTestData.Meeting.AddAttendee(meetingTestData.MeetingGroup, newMemberId, 0);
-    });          
+    });
 }
 ```
 
-``CreateMeetingTestData`` method is implementation of [SUT Factory](https://blog.ploeh.dk/2009/02/13/SUTFactory/) described by Mark Seemann which allows to keep common creation logic in one place:
+``CreateMeetingTestData`` method is an implementation of [SUT Factory](https://blog.ploeh.dk/2009/02/13/SUTFactory/) described by Mark Seemann which allows keeping common creation logic in one place:
 
 ```csharp
 protected MeetingTestData CreateMeetingTestData(MeetingTestDataOptions options)
@@ -922,11 +926,11 @@ protected MeetingTestData CreateMeetingTestData(MeetingTestDataOptions options)
 
 ## 4. Technology
 
-List of technologies, frameworks and libraries used to implementation:
+List of technologies, frameworks and libraries used for implementation:
 
 - [.NET Core 2.2](https://dotnet.microsoft.com/download) (platform)
 - [MS SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-editions-express) (database)
-- [Entity Framework Core 2.2](https://docs.microsoft.com/en-us/ef/core/) (ORM Write Model implementation for DDD) 
+- [Entity Framework Core 2.2](https://docs.microsoft.com/en-us/ef/core/) (ORM Write Model implementation for DDD)
 - [Autofac](https://autofac.org/) (Inversion of Control Container)
 - [IdentityServer4](http://docs.identityserver.io) (Authentication and Authorization)
 - [Serilog](https://serilog.net/) (structured logging)
@@ -985,3 +989,70 @@ GitHub: [https://github.com/kgrzybek](https://github.com/kgrzybek)
 ## 9. License
 
 The project is under [MIT license](https://opensource.org/licenses/MIT).
+
+## 10. Inspirations and Recommendations
+
+### Modular Monolith
+- ["Modular Monoliths"](https://www.youtube.com/watch?v=5OjqD-ow8GE) presentation, Simon Brown
+- ["Majestic Modular Monoliths"](https://www.youtube.com/watch?v=BOvxJaklcr0) presentation, Axel Fontaine
+- ["Building Better Monoliths – Modulithic Applications with Spring Boot"](https://speakerdeck.com/olivergierke/building-better-monoliths-modulithic-applications-with-spring-boot-cd16e6ec-d334-497d-b9f6-3f92d5db035a) slides, Oliver Drotbohm
+- ["MonolithFirst"](https://martinfowler.com/bliki/MonolithFirst.html) article, Martin Fowler
+- ["Pattern: Monolithic Architecture"](https://microservices.io/patterns/monolithic.html) pattern description, Chris Richardson
+
+### Domain-Driven Design
+- ["Domain-Driven Design: Tackling Complexity in the Heart of Software"](https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215) book, Eric Evans
+- ["Implementing Domain-Driven Design"](https://www.amazon.com/Implementing-Domain-Driven-Design-Vaughn-Vernon/dp/0321834577) book, Vaughn Vernon
+- ["Domain-Driven Design Distilled"](https://www.amazon.com/dp/0134434420) book, Vaughn Vernon
+- ["Patterns, Principles, and Practices of Domain-Driven Design"](https://www.amazon.com/Patterns-Principles-Practices-Domain-Driven-Design-ebook/dp/B00XLYUA0W) book, Scott Millett, Nick Tune
+- ["Secure By Design"](https://www.amazon.com/Secure-Design-Daniel-Deogun/dp/1617294357) book, Daniel Deogun, Dan Bergh Johnsson, Daniel Sawano
+- ["Hands-On Domain-Driven Design with .NET Core: Tackling complexity in the heart of software by putting DDD principles into practice"](https://www.amazon.com/Hands-Domain-Driven-Design-NET-ebook/dp/B07C5WSR9B) book, Alexey Zimarev
+- ["Domain Modeling Made Functional: Tackle Software Complexity with Domain-Driven Design and F#"](https://www.amazon.com/Domain-Modeling-Made-Functional-Domain-Driven-ebook/dp/B07B44BPFB) book, Scott Wlaschin
+- ["DDD by examples - library"](https://github.com/ddd-by-examples/library) GH repository, Jakub Pilimon, Bartłomiej Słota
+- ["IDDD_Samples"](https://github.com/VaughnVernon/IDDD_Samples) GH repository, Vaughn Vernon
+- ["IDDD_Samples_NET"](https://github.com/VaughnVernon/IDDD_Samples_NET) GH repository, Vaughn Vernon
+- ["Awesome Domain-Driven Design"](https://github.com/heynickc/awesome-ddd) GH repository, Nick Chamberlain
+
+### Application Architecture
+- ["Patterns of Enterprise Application Architecture"](https://martinfowler.com/books/eaa.html) book, Martin Fowler
+- ["Dependency Injection Principles, Practices, and Patterns"](https://www.manning.com/books/dependency-injection-principles-practices-patterns) book, Steven van Deursen, Mark Seemann
+- ["Clean Architecture: A Craftsman's Guide to Software Structure and Design (Robert C. Martin Series"](https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164) book, Robert C. Martin
+- ["The Clean Architecture"](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) article, Robert C. Martin
+- ["The Onion Architecture"](https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/) article series, Jeffrey Palermo
+- ["Hexagonal/Ports & Adapters Architecture"](https://web.archive.org/web/20180822100852/http://alistair.cockburn.us/Hexagonal+architecture) article, Alistair Cockburn
+- ["DDD, Hexagonal, Onion, Clean, CQRS, … How I put it all together"](https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/) article, Herberto Graca
+
+### Software Architecture
+- ["Software Architecture in Practice (3rd Edition)"](https://www.amazon.com/Software-Architecture-Practice-3rd-Engineering/dp/0321815734) book, Len Bass, Paul Clements, Rick Kazman
+- ["Software Architecture for Developers Vol 1 & 2"](https://softwarearchitecturefordevelopers.com/) book, Simon Brown
+- ["Just Enough Software Architecture: A Risk-Driven Approach"](https://www.amazon.com/Just-Enough-Software-Architecture-Risk-Driven/dp/0984618104) book, George H. Fairbanks
+- ["Software Systems Architecture: Working With Stakeholders Using Viewpoints and Perspectives (2nd Edition)"](https://www.amazon.com/Software-Systems-Architecture-Stakeholders-Perspectives/dp/032171833X/) book, Nick Rozanski, Eóin Woods
+- ["Design It!: From Programmer to Software Architect (The Pragmatic Programmers)"](https://www.amazon.com/Design-Programmer-Architect-Pragmatic-Programmers/dp/1680502093) book, Michael Keeling
+
+### System Architecture
+- ["Enterprise Integration Patterns : Designing, Building, and Deploying Messaging Solutions"](https://www.enterpriseintegrationpatterns.com/) book and catalogue, Gregor Hohpe, Bobby Woolf
+- ["Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems "](https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321) book, Martin Kleppman
+- ["Building Evolutionary Architectures: Support Constant Change"](https://www.amazon.com/Building-Evolutionary-Architectures-Support-Constant/dp/1491986360) book, Neal Ford
+- ["Building Microservices: Designing Fine-Grained Systems"](https://www.amazon.com/Building-Microservices-Designing-Fine-Grained-Systems/dp/1491950358) book, Sam Newman
+
+### Design
+- ["Refactoring: Improving the Design of Existing Code"](https://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672) book, Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
+- ["Clean Code: A Handbook of Agile Software Craftsmanship"](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) book, Robert C. Martin
+- ["Agile Principles, Patterns, and Practices in C#"](https://www.amazon.com/Agile-Principles-Patterns-Practices-C/dp/0131857258) book, Robert C. Martin
+- ["Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development (3rd Edition)"](https://www.amazon.com/Applying-UML-Patterns-Introduction-Object-Oriented/dp/0131489062) book, Craig Larman
+- ["Working Effectively with Legacy Code"](https://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052) book, Michael Feathers 
+- ["Code Complete: A Practical Handbook of Software Construction, Second Edition"](https://www.amazon.com/Code-Complete-Practical-Handbook-Construction/dp/0735619670) book, Steve McConnell
+- ["Design Patterns: Elements of Reusable Object-Oriented Software"](https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612) book, Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
+
+### Craftsmanship
+- ["The Clean Coder: A Code of Conduct for Professional Programmers"](https://www.amazon.com/Clean-Coder-Conduct-Professional-Programmers/dp/0137081073) book, Robert C. Martin
+- ["The Pragmatic Programmer: From Journeyman to Master"](https://www.amazon.com/Pragmatic-Programmer-Journeyman-Master/dp/020161622X) book, Andrew Hunt
+
+### Testing
+- ["The Art of Unit Testing: with examples in C#"](https://www.amazon.com/Art-Unit-Testing-examples/dp/1617290890) book, Roy Osherove
+
+### UML
+- ["UML Distilled: A Brief Guide to the Standard Object Modeling Language (3rd Edition)"](https://www.amazon.com/UML-Distilled-Standard-Modeling-Language/dp/0321193687) book, Martin Fowler
+
+### Event Storming
+- ["Introducing EventStorming"](https://leanpub.com/introducing_eventstorming) book, Alberto Brandolini
+- ["Awesome EventStorming"](https://github.com/mariuszgil/awesome-eventstorming) GH repository, Mariusz Gil
